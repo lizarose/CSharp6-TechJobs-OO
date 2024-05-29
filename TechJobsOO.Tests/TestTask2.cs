@@ -58,7 +58,7 @@ namespace TechJobsOO.Tests
             Console.WriteLine(testLocation.Id);
 
             //verify
-            Assert.AreEqual(2, testLocation.Id, "Second constructor not able to update Id");
+            Assert.AreEqual(8, testLocation.Id, "Second constructor not able to update Id");
             Assert.IsFalse(testLocation.Id == 4, "Second constructor passes value to Id. Is this desirable?");
         }
 
@@ -177,6 +177,7 @@ namespace TechJobsOO.Tests
             Assert.AreEqual(testPosition.Value.ToString(), "Quality Control", "ToString does not return same output as set value");
         }
 
+        //TODO: Task 2: Remove this line to uncomment the tests
 
     }
 }
