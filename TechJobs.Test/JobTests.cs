@@ -91,7 +91,7 @@ namespace TechJobs.Tests
         {
             Job job3 = new Job("Product tester", new Employer(""), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
 
-            int Id = 5;
+            int Id = 60;
             string Name = "Product tester";
             string EmployerName = "Data not available";
             string EmployerLocation = "Desert";
