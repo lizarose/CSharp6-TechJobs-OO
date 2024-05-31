@@ -1,4 +1,7 @@
 ﻿
+using System.Data.Common;
+using System.Xml;
+
 namespace TechJobs.Tests
 {
 	[TestClass]
@@ -23,18 +26,18 @@ namespace TechJobs.Tests
     [TestMethod]  //2
         public void TestJobConstructorSetsAllFields()
         {
-            string testName = "Product tester";
-            string testEmployerName = "ACME";
-            string testEmployerLocation = "Desert";
-            string testJobType = "Quality control";
-            string testJobCoreCompetency = "Persistence";
+            string Name = "Product tester";
+            string EmployerName = "ACME";
+            string EmployerLocation = "Desert";
+            string JobType = "Quality control";
+            string JobCoreCompetency = "Persistence";
 
 
-            Assert.AreEqual(testName, job3.Name);
-            Assert.AreEqual(testEmployerName, job3.EmployerName);
-            Assert.AreEqual(testEmployerLocation, job3.EmployerLocation);
-            Assert.AreEqual(testJobType, job3.JobType);
-            Assert.AreEqual(testJobCoreCompetency, job3.JobCoreCompetency);
+            Assert.AreEqual(Name, job3.Name);
+            Assert.AreEqual(EmployerName, job3.EmployerName.Value);
+            Assert.AreEqual(EmployerLocation, job3.EmployerLocation.Value);
+            Assert.AreEqual(JobType, job3.JobType.Value);
+            Assert.AreEqual(JobCoreCompetency, job3.JobCoreCompetency.Value);
 
         }
 
@@ -46,6 +49,63 @@ namespace TechJobs.Tests
 
 
 
+
+
+
+
+        //Task 5 Tests
+        [TestMethod] //1
+        public void TestToStringStartsAndEndsWithNewLine()
+        {
+            string result = job3.ToString();
+            
+            Assert.IsTrue(result.StartsWith(Environment.NewLine));
+            Assert.IsTrue(result.EndsWith(Environment.NewLine));
+
+        }
+
+        [TestMethod] //2
+        public void TestToStringContainsCorrectLabelsAndData()
+        {
+            Job job3 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+
+           
+            string Name = "Product tester";
+            string EmployerName = "ACME";
+            string EmployerLocation = "Desert";
+            string JobType = "Quality control";
+            string JobCoreCompetency = "Persistence";
+
+
+            Assert.AreEqual(Name, job3.Name);
+            Assert.AreEqual(EmployerName, job3.EmployerName.Value);
+            Assert.AreEqual(EmployerLocation, job3.EmployerLocation.Value);
+            Assert.AreEqual(JobType, job3.JobType.Value);
+            Assert.AreEqual(JobCoreCompetency, job3.JobCoreCompetency.Value);
+
+
+        }
+
+        [TestMethod] //3
+        public void TestToStringHandlesEmptyField()
+        {
+            Job job3 = new Job("Product tester", new Employer(""), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+
+            int Id = 5;
+            string Name = "Product tester";
+            string EmployerName = "Data not available";
+            string EmployerLocation = "Desert";
+            string JobType = "Quality control";
+            string JobCoreCompetency = "Persistence";
+            
+            string nl = Environment.NewLine;
+
+            string expected = nl + "ID: " + Id + nl + "Name: " + Name + nl + "Employer: " + EmployerName + nl + "Location: " + EmployerLocation + nl + "Position Type: " + JobType + nl + "Core Competency: " + JobCoreCompetency + nl;
+
+            string result = job3.ToString();
+
+            Assert.AreEqual(expected, result);
+        }
 
 
 

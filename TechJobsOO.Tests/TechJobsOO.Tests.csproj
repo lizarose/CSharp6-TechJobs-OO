@@ -29,4 +29,13 @@
     </Content>
   </ItemGroup>
 
+<ItemGroup>
+    <Content Include="EmptyFieldTest.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="StartsAndEndsWithNewLine.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>
